@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage ('Checkout') {
-            steps {
-                git branch: 'master', url: 'https://github.com/ScaleSec/vulnado.git'
-            }
-        }
         stage ('Build') {
             steps {
                 sh 'mvn --batch-mode -V -U -e clean verify -Dsurefire.useFile=false -Dmaven.test.failure.ignore'
